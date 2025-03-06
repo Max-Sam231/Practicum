@@ -1,6 +1,7 @@
 #include "../intg.h"
 #include <assert.h>
 #include <math.h>
+#include <stdio.h>
 
 double linear_func(double x) { return x; }
 
