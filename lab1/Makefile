@@ -10,16 +10,16 @@ fmt:
 #--- uravnenie
 
 urav.o: urav.h urav.c
-	gcc -g -c urav.c -o urav.o
+	gcc -g -c urav.c -o urav.o -lm
 
 urav.a: urav.o
-	ar rc urav.a urav.o
+	ar rc urav.a urav.o -lm
 
 urav_test.o: tests/urav_test.c
-	gcc -g -c tests/urav_test.c -o urav_test.o
+	gcc -g -c tests/urav_test.c -o urav_test.o -lm
 
 urav_test: urav_test.o urav.a
-	gcc -g -static -o urav_test urav_test.o urav.a
+	gcc -g -static -o urav_test urav_test.o urav.a -lm
 
 
 test1: urav_test
@@ -28,16 +28,16 @@ test1: urav_test
 #--- integral
 
 intg.o: intg.h intg.c
-	gcc -g -c intg.c -o intg.o
+	gcc -g -c intg.c -o intg.o -lm
 
 intg.a: intg.o
-	ar rc intg.a intg.o
+	ar rc intg.a intg.o -lm
 
 intg_test.o: tests/intg_test.c
-	gcc -g -c tests/intg_test.c -o intg_test.o
+	gcc -g -c tests/intg_test.c -o intg_test.o -lm
 
 intg_test: intg_test.o intg.a
-	gcc -g -static -o intg_test intg_test.o intg.a
+	gcc -g -static -o intg_test intg_test.o intg.a -lm
 
 
 test2: intg_test
