@@ -15,7 +15,7 @@ void test_integral_linear() {
   int n = 1000;
   double result = integral(&linear_func, a, b, n);
   assert(fabs(result - 0.5) < 1e-6);
-  printf("test_integral_linear passed \n")
+  printf("test_integral_linear passed \n");
 }
 
 void test_integral_quadratic() {
@@ -24,7 +24,7 @@ void test_integral_quadratic() {
   int n = 1000;
   double result = integral(&quadratic_func, a, b, n);
   assert(fabs(result - 1.0 / 3.0) < 1e-6);
-  printf("test_integral_quadratic passed \n")
+  printf("test_integral_quadratic passed \n");
 }
 
 void test_integral_sin() {
@@ -33,7 +33,7 @@ void test_integral_sin() {
   int n = 1000;
   double result = integral(&sin, a, b, n);
   assert(fabs(result - 2.0) < 1e-6);
-  printf("test_integral_sin passed \n")
+  printf("test_integral_sin passed \n");
 }
 
 void test_integral_exp() {
@@ -42,7 +42,7 @@ void test_integral_exp() {
   int n = 1000;
   double result = integral(&exp, a, b, n);
   assert(fabs(result - (exp(1.0) - 1.0)) < 1e-6);
-  printf("test_integral_exp passed \n")
+  printf("test_integral_exp passed \n");
 }
 
 void test_integral_zero_interval() {
@@ -51,7 +51,7 @@ void test_integral_zero_interval() {
   int n = 1000;
   double result = integral(&linear_func, a, b, n);
   assert(result == 0.0);
-  printf("test_integral_zero_interval passed \n")
+  printf("test_integral_zero_interval passed \n");
 }
 
 void test_integral_large_n() {
@@ -60,7 +60,7 @@ void test_integral_large_n() {
   int n = 1000000;
   double result = integral(&linear_func, a, b, n);
   assert(fabs(result - 0.5) < 1e-6);
-  printf("test_integral_large_n passed \n")
+  printf("test_integral_large_n passed \n");
 }
 
 void test_integral_inverse() {
@@ -69,7 +69,7 @@ void test_integral_inverse() {
   int n = 1000;
   double result = integral(&inverse_func, a, b, n);
   assert(fabs(result - log(2.0)) < 1e-6);
-  printf("test_integral_inverse passed \n")
+  printf("test_integral_inverse passed \n");
 }
 
 void test_integral_cos() {
@@ -78,7 +78,7 @@ void test_integral_cos() {
   int n = 1000;
   double result = integral(&cos, a, b, n);
   assert(fabs(result - 1.0) < 1e-6);
-  printf("test_integral_cos passed \n")
+  printf("test_integral_cos passed \n");
 }
 
 int main() {
