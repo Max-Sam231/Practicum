@@ -30,7 +30,7 @@ void test_integral_quadratic() {
 void test_integral_sin() {
   double a = 0.0;
   double b = M_PI;
-  int n = 1000;
+  int n = 10000;
   double result = integral(&sin, a, b, n);
   assert(fabs(result - 2.0) < 1e-6);
   printf("test_integral_sin passed \n");
