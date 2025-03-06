@@ -12,7 +12,7 @@ fmt:
 urav.o: urav.h urav.c
 	gcc -g -c urav.c -o urav.o
 
-urav.a: urav.a
+urav.a: urav.o
 	ar rc urav.a urav.o
 
 urav_test.o: tests/urav_test.c
@@ -30,7 +30,7 @@ test1: urav_test
 intg.o: intg.h intg.c
 	gcc -g -c intg.c -o intg.o
 
-intg.a: intg.a
+intg.a: intg.o
 	ar rc intg.a intg.o
 
 intg_test.o: tests/intg_test.c
@@ -48,7 +48,7 @@ test2: intg_test
 spsk.o: spsk.h spsk.c
 	gcc -g -c spsk.c -o spsk.o
 
-spsk.a: spsk.a
+spsk.a: spsk.o
 	ar rc spsk.a spsk.o
 
 spsk_test.o: tests/spsk_test.c
@@ -66,7 +66,7 @@ test3: spsk_test
 stck.o: stck.h stck.c
 	gcc -g -c stck.c -o stck.o
 
-stck.a: stck.a
+stck.a: stck.o
 	ar rc stck.a stck.o
 
 stck_test.o: tests/stck_test.c
