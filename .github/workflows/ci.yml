@@ -11,6 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install dependencies
+        run: sudo apt update && sudo apt install -y clang-format make
+        
       - name: Checkstyle
         working-directory: lab1
         run: make check_fmt
