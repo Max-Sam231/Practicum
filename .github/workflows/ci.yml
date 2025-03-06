@@ -1,0 +1,23 @@
+name: Lab1 CI-pipeline
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: sudo apt update && sudo apt install -y clang-format make
+        
+      - name: Checkstyle
+        working-directory: lab1
+        run: make check_fmt
+
+      - name: Run tests
+        working-directory: lab1
+        run: make run_tests
