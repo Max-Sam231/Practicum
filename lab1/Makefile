@@ -80,7 +80,7 @@ test4: stck_test
 	./stck_test
 
 run_tests: test1 test2 test3 test4
-	./test1
-	./test2
-	./test3
-	./test4
+	./urav_test
+	./intg_test
+	./spsk_test
+	./stck_test
