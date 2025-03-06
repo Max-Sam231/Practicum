@@ -28,7 +28,7 @@ void Push(Stack *stack, int value) {
 };
 
 void Pop(Stack *stack) {
-  if (Empty) {
+  if (Empty(stack)) {
     printf("Стэк пуст\n");
     return;
   }
