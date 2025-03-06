@@ -15,8 +15,8 @@ urav.o: urav.h urav.c
 urav.a: urav.a
 	ar rc urav.a urav.o
 
-urav_test.o: urav_test.c
-	gcc -g -c urav_test.c -o urav_test.o
+urav_test.o: tests/urav_test.c
+	gcc -g -c tests/urav_test.c -o urav_test.o
 
 urav_test: urav_test.o urav.a
 	gcc -g -static -o urav_test urav_test.o urav.a
@@ -33,8 +33,8 @@ intg.o: intg.h intg.c
 intg.a: intg.a
 	ar rc intg.a intg.o
 
-intg_test.o: intg_test.c
-	gcc -g -c intg_test.c -o intg_test.o
+intg_test.o: tests/intg_test.c
+	gcc -g -c tests/intg_test.c -o intg_test.o
 
 intg_test: intg_test.o intg.a
 	gcc -g -static -o intg_test intg_test.o intg.a
@@ -51,8 +51,8 @@ spsk.o: spsk.h spsk.c
 spsk.a: spsk.a
 	ar rc spsk.a spsk.o
 
-spsk_test.o: spsk_test.c
-	gcc -g -c spsk_test.c -o spsk_test.o
+spsk_test.o: tests/spsk_test.c
+	gcc -g -c tests/spsk_test.c -o spsk_test.o
 
 spsk_test: spsk_test.o spsk.a
 	gcc -g -static -o spsk_test spsk_test.o spsk.a
@@ -69,8 +69,8 @@ stck.o: stck.h stck.c
 stck.a: stck.a
 	ar rc stck.a stck.o
 
-stck_test.o: stck_test.c
-	gcc -g -c stck_test.c -o stck_test.o
+stck_test.o: tests/stck_test.c
+	gcc -g -c tests/stck_test.c -o stck_test.o
 
 stck_test: stck_test.o stck.a
 	gcc -g -static -o stck_test stck_test.o stck.a
