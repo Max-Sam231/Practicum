@@ -2,7 +2,11 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-void Init(Stack *stack) { stack->topElem = -1; };
+void Init(Stack *stack, int size) {
+  stack->items = (int *)malloc(size * sizeof(int));
+  stack->topElem = -1;
+  stack->size = size;
+};
 
 bool Empty(Stack *stack) { return stack->topElem == -1; };
 

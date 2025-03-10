@@ -1,13 +1,12 @@
 #include <stdbool.h>
 
-#define SIZE 10
-
 typedef struct {
-  int items[SIZE];
+  int *items;
   int topElem;
+  int size;
 } Stack;
 
-void Init(Stack *stack);
+void Init(Stack *stack, int size);
 bool Empty(Stack *stack);
 bool Full(Stack *stack);
 int Peek(Stack *stack);
