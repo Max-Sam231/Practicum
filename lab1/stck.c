@@ -11,7 +11,7 @@ void Init(Stack *stack, int size) {
 
 bool Empty(Stack *stack) { return stack->topElem == -1; };
 
-bool Full(Stack *stack) { return stack->topElem == SIZE - 1; };
+bool Full(Stack *stack) { return stack->topElem == stack->size - 1; };
 
 int Peek(Stack *stack) {
   if (Empty(stack) == false) {

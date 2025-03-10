@@ -1,6 +1,8 @@
 #include "../stck.h"
 #include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
+
 
 void test_init_stack() {
   Stack stack;
