@@ -31,7 +31,7 @@ void PushEnd(Item **startElem, int data) {
 
 void PushMiddle(Item **startElem, int data, int index) {
   if (index <= 0) {
-    return
+    return;
   }
   Item *newItem = CreateItem(data);
   Item *tempStartElem = *startElem;
