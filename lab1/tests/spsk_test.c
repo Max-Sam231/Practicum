@@ -1,17 +1,18 @@
 #include "../spsk.h"
 #include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-void test_CreateItem() {
-  Item *item = CreateItem(42);
-  assert(item != NULL);
-  assert(item->current == 42);
-  assert(item->next == NULL);
-  free(item);
-  printf("test_CreateItem passed!\n");
+void TestCreateItem() {
+  Item *list = CreateItem(42);
+  assert(list != NULL);
+  assert(list->current == 42);
+  assert(list->next == NULL);
+  free(list);
+  printf("TestCreateItem passed!\n");
 }
 
-void test_PushStart() {
+void TestPushStart() {
   Item *list = NULL;
   PushStart(&list, 10);
   assert(list != NULL);
@@ -25,10 +26,10 @@ void test_PushStart() {
 
   free(list->next);
   free(list);
-  printf("test_PushStart passed!\n");
+  printf("TestPushStart passed!\n");
 }
 
-void test_PushEnd() {
+void TestPushEnd() {
   Item *list = NULL;
   PushEnd(&list, 10);
   assert(list != NULL);
@@ -42,10 +43,10 @@ void test_PushEnd() {
 
   free(list->next);
   free(list);
-  printf("test_PushEnd passed!\n");
+  printf("TestPushEnd passed!\n");
 }
 
-void test_PushMiddle() {
+void TestPushMiddle() {
   Item *list = NULL;
   PushEnd(&list, 10);
   PushEnd(&list, 30);
@@ -59,10 +60,10 @@ void test_PushMiddle() {
   free(list->next->next);
   free(list->next);
   free(list);
-  printf("test_PushMiddle passed!\n");
+  printf("TestPushMiddle passed!\n");
 }
 
-void test_PopItem() {
+void TestPopItem() {
   Item *list = NULL;
   PushEnd(&list, 10);
   PushEnd(&list, 20);
@@ -81,10 +82,10 @@ void test_PopItem() {
   assert(list == NULL);
 
   free(list);
-  printf("test_PopItem passed!\n");
+  printf("TestPopItem passed!\n");
 }
 
-void test_FindItem() {
+void TestFindItem() {
   Item *list = NULL;
   PushEnd(&list, 10);
   PushEnd(&list, 20);
@@ -100,10 +101,10 @@ void test_FindItem() {
   free(list->next->next);
   free(list->next);
   free(list);
-  printf("test_FindItem passed!\n");
+  printf("TestFindItem passed!\n");
 }
 
-void test_CountElem() {
+void TestCountElem() {
   Item *list = NULL;
   assert(CountElem(list) == 0);
 
@@ -117,33 +118,33 @@ void test_CountElem() {
   free(list->next->next);
   free(list->next);
   free(list);
-  printf("test_CountElem passed!\n");
+  printf("TestCountElem passed!\n");
 }
 
-void test_PopItem_NotFound() {
+void TestPopItemNotFound() {
   Item *list = NULL;
   PushEnd(&list, 10);
   PushEnd(&list, 20);
 
-  PopItem(&list, 30); // Элемент не найден
+  PopItem(&list, 30);
   assert(list->current == 10);
   assert(list->next->current == 20);
   assert(list->next->next == NULL);
 
   free(list->next);
   free(list);
-  printf("test_PopItem_NotFound passed!\n");
+  printf("TestPopItemNotFound passed!\n");
 }
 
 int main() {
-  test_CreateItem();
-  test_PushStart();
-  test_PushEnd();
-  test_PushMiddle();
-  test_PopItem();
-  test_FindItem();
-  test_CountElem();
-  test_PopItem_NotFound();
+  TestCreateItem();
+  TestPushStart();
+  TestPushEnd();
+  TestPushMiddle();
+  TestPopItem();
+  TestFindItem();
+  TestCountElem();
+  TestPopItemNotFound();
 
   return 0;
 }

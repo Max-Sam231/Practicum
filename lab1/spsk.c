@@ -31,13 +31,12 @@ void PushEnd(Item **startElem, int data) {
 
 void PushMiddle(Item **startElem, int data, int index) {
   if (index <= 0) {
-    printf("Неверный индекс");
+    return
   }
   Item *newItem = CreateItem(data);
   Item *tempStartElem = *startElem;
   for (int i = 0; i < index - 1; i++) {
     if (tempStartElem == NULL) {
-      printf("Неверный индекс");
       return;
     }
     tempStartElem = tempStartElem->next;
@@ -59,7 +58,6 @@ void PopItem(Item **startElem, int value) {
     tempStartElem = tempStartElem->next;
   }
   if (tempStartElem == NULL) {
-    printf("Элемент не найден\n");
     return;
   }
   prev->next = tempStartElem->next;
