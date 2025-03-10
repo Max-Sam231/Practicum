@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 void test_init_stack() {
   Stack stack;
   Init(&stack, 10);
