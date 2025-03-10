@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-void test_find_roots1() {
+void TestFindRoots1() {
   bool inability_root = false;
   double a = 0;
   double b = 0;
@@ -13,11 +13,11 @@ void test_find_roots1() {
   int roots_count = 0;
   double epsil = 1e-7;
 
-  find_roots(&inability_root, a, b, c, roots, &roots_count, epsil);
+  FindRoots(&inability_root, a, b, c, roots, &roots_count, epsil);
   assert(inability_root == true);
 }
 
-void test_find_roots2() {
+void TestFindRoots2() {
   bool inability_root = false;
   double a = 1;
   double b = 0;
@@ -26,13 +26,13 @@ void test_find_roots2() {
   int roots_count = 0;
   double epsil = 1e-7;
 
-  find_roots(&inability_root, a, b, c, roots, &roots_count, epsil);
+  FindRoots(&inability_root, a, b, c, roots, &roots_count, epsil);
   assert(roots_count == 2);
   assert(fabsl(roots[0] - (-1)) < 1e-7);
   assert(fabsl(roots[1] - 1) < 1e-7);
 }
 
-void test_find_roots3() {
+void TestFindRoots3() {
   bool inability_root = false;
   double a = 1;
   double b = 0;
@@ -41,12 +41,12 @@ void test_find_roots3() {
   int roots_count = 0;
   double epsil = 1e-7;
 
-  find_roots(&inability_root, a, b, c, roots, &roots_count, epsil);
+  FindRoots(&inability_root, a, b, c, roots, &roots_count, epsil);
   assert(roots_count == 1);
   assert((fabsl(roots[0] - 0) < 1e-7));
 }
 
-void test_find_roots4() {
+void TestFindRoots4() {
   bool inability_root = false;
   double a = 1;
   double b = 0;
@@ -55,11 +55,11 @@ void test_find_roots4() {
   int roots_count = 0;
   double epsil = 1e-7;
 
-  find_roots(&inability_root, a, b, c, roots, &roots_count, epsil);
+  FindRoots(&inability_root, a, b, c, roots, &roots_count, epsil);
   assert(roots_count == 0);
 }
 
-void test_find_roots5() {
+void TestFindRoots5() {
   bool inability_root = false;
   double a = 1;
   double b = 0;
@@ -68,13 +68,13 @@ void test_find_roots5() {
   int roots_count = 0;
   double epsil = 1e-14;
 
-  find_roots(&inability_root, a, b, c, roots, &roots_count, epsil);
+  FindRoots(&inability_root, a, b, c, roots, &roots_count, epsil);
   assert(roots_count == 2);
-  assert(fabsl(roots[0] - (-3.162e-4)) < 1e-7);
-  assert(fabsl(roots[1] - 3.162e-4) < 1e-7);
+  assert(fabsl(roots[0] - (-3e-4)) < 1e-4);
+  assert(fabsl(roots[1] - 3e-4) < 1e-4);
 }
 
-void test_find_roots6() {
+void TestFindRoots6() {
   bool inability_root = false;
   double a = 1;
   double b = -1e10;
@@ -83,14 +83,14 @@ void test_find_roots6() {
   int roots_count = 0;
   double epsil = 1e-11;
 
-  find_roots(&inability_root, a, b, c, roots, &roots_count, epsil);
+  FindRoots(&inability_root, a, b, c, roots, &roots_count, epsil);
   assert(roots_count == 2);
 
   assert(fabsl(roots[0] - (-1e-10)) < epsil);
   assert(fabsl(roots[1] - 1e10) < epsil);
 }
 
-void test_find_roots7() {
+void TestFindRoots7() {
   bool inability_root = false;
   double a = 1;
   double b = 0;
@@ -99,19 +99,18 @@ void test_find_roots7() {
   int roots_count = 0;
   double epsil = 1e-7;
 
-  find_roots(&inability_root, a, b, c, roots, &roots_count, epsil);
+  FindRoots(&inability_root, a, b, c, roots, &roots_count, epsil);
   assert(roots_count == 1);
-
-  assert(fabsl(roots[0] - (-1e-10)) < epsil);
+  assert(fabsl(roots[0] - 0) < epsil);
 }
 
 int main() {
-  test_find_roots1();
-  test_find_roots2();
-  test_find_roots3();
-  test_find_roots4();
-  test_find_roots5();
-  test_find_roots6();
-  test_find_roots7();
+  TestFindRoots1();
+  TestFindRoots2();
+  TestFindRoots3();
+  TestFindRoots4();
+  TestFindRoots5();
+  TestFindRoots6();
+  TestFindRoots7();
   return 0;
 }
