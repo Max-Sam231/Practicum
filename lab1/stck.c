@@ -1,6 +1,7 @@
 #include "stck.h"
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 void Init(Stack *stack, int size) {
   stack->items = (int *)malloc(size * sizeof(int));
