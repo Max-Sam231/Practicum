@@ -3,23 +3,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void test_init_stack() {
+void TestInitStack() {
   Stack stack;
   Init(&stack, 10);
   assert(stack.topElem == -1);
-  printf("test_init_stack passed\n");
+  printf("TestInitStack passed\n");
   free(stack.items);
 }
 
-void test_empty_stack() {
+void TestEmptyStack() {
   Stack stack;
   Init(&stack, 10);
   assert(Empty(&stack) == true);
-  printf("test_empty_stack passed\n");
+  printf("TestEmptyStack passed\n");
   free(stack.items);
 }
 
-void test_full_stack() {
+void TestFullStack() {
   Stack stack;
   int size = 10;
   Init(&stack, size);
@@ -27,57 +27,57 @@ void test_full_stack() {
     Push(&stack, i);
   }
   assert(Full(&stack) == true);
-  printf("test_full_stack passed\n");
+  printf("TestFullStack passed\n");
   free(stack.items);
 }
 
-void test_peek_stack() {
+void TestPeekStack() {
   Stack stack;
   Init(&stack, 10);
   Push(&stack, 10);
   assert(Peek(&stack) == 10);
-  printf("test_peek_stack passed\n");
+  printf("TestPeekStack passed\n");
   free(stack.items);
 }
 
-void test_push_stack() {
+void TestPushStack() {
   Stack stack;
   Init(&stack, 10);
   Push(&stack, 20);
   assert(stack.topElem == 0);
   assert(stack.items[stack.topElem] == 20);
-  printf("test_push_stack passed\n");
+  printf("TestPushStack passed\n");
   free(stack.items);
 }
 
-void test_pop_stack() {
+void TestPopStack() {
   Stack stack;
   Init(&stack, 10);
   Push(&stack, 30);
   Pop(&stack);
   assert(stack.topElem == -1);
-  printf("test_pop_stack passed\n");
+  printf("TestPopStack passed\n");
   free(stack.items);
 }
 
-void test_pop_empty_stack() {
+void TestPopEmptyStack() {
   Stack stack;
   Init(&stack, 10);
   Pop(&stack);
   assert(stack.topElem == -1);
-  printf("test_pop_empty_stack passed\n");
+  printf("TestPopEmptyStack passed\n");
   free(stack.items);
 }
 
-void test_peek_empty_stack() {
+void TestPeekEmptyStack() {
   Stack stack;
   Init(&stack, 10);
   assert(Peek(&stack) == -1);
-  printf("test_peek_empty_stack passed\n");
+  printf("TestPeekEmptyStack passed\n");
   free(stack.items);
 }
 
-void test_push_full_stack() {
+void TestPushFullStack() {
   Stack stack;
   int size = 10;
   Init(&stack, size);
@@ -86,20 +86,20 @@ void test_push_full_stack() {
   }
   Push(&stack, 11);
   assert(stack.topElem == size - 1);
-  printf("test_push_full_stack passed\n");
+  printf("TestPushFullStack passed\n");
   free(stack.items);
 }
 
 int main() {
-  test_init_stack();
-  test_empty_stack();
-  test_full_stack();
-  test_peek_stack();
-  test_push_stack();
-  test_pop_stack();
-  test_pop_empty_stack();
-  test_peek_empty_stack();
-  test_push_full_stack();
+  TestInitStack();
+  TestEmptyStack();
+  TestFullStack();
+  TestPeekStack();
+  TestPushStack();
+  TestPopStack();
+  TestPopEmptyStack();
+  TestPeekEmptyStack();
+  TestPushFullStack();
 
   return 0;
 }
