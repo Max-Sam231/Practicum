@@ -10,9 +10,14 @@ void Init(Stack *stack, int size) {
   stack->isEmpty = true;
 };
 
-bool Empty(Stack *stack) {if(stack->topElem == -1){stack->isEmpty = true;} return stack->isEmpty; };
+bool Empty(Stack *stack) {
+  if (stack->topElem == -1) {
+    stack->isEmpty = true;
+  }
+  return stack->isEmpty;
+};
 
-bool Full(Stack *stack) {return stack->topElem == stack->size - 1; };
+bool Full(Stack *stack) { return stack->topElem == stack->size - 1; };
 
 int Peek(Stack *stack) {
   if (Empty(stack) == false) {
@@ -39,4 +44,3 @@ int Pop(Stack *stack) {
   stack->topElem--;
   return tempValue;
 };
-
