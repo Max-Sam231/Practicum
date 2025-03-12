@@ -4,6 +4,7 @@ typedef struct {
   int *items;
   int topElem;
   int size;
+  bool isEmpty;
 } Stack;
 
 void Init(Stack *stack, int size);

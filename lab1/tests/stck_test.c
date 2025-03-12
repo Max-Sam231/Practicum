@@ -63,8 +63,11 @@ void TestPopStack() {
 void TestPopEmptyStack() {
   Stack stack;
   Init(&stack, 10);
+  Push(&stack, -1);
+  Push(&stack, 10);
   Pop(&stack);
-  assert(stack.topElem == -1);
+  assert(Pop(&stack) == -1 && stack.isEmpty == false);
+  assert(Pop(&stack) == -1);
   printf("TestPopEmptyStack passed\n");
   free(stack.items);
 }
