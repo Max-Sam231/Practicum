@@ -1,4 +1,4 @@
-#include "intg.h"
+#include "integral.h"
 #include <math.h>
 #include <stdio.h>
 
