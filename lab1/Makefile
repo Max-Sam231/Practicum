@@ -7,80 +7,80 @@ check_fmt:
 fmt:
 	clang-format -style=LLVM -i `find -regex ".+\.[ch]"`
 
-#--- uravnenie
+#--- quadratic equation
 
-urav.o: urav.h urav.c
-	gcc -g -c urav.c -o urav.o -lm
+quadratic_equation.o: quadratic_equation.h quadratic_equation.c
+	gcc -g -c quadratic_equation.c -o quadratic_equation.o -lm
 
-urav.a: urav.o
-	ar rc urav.a urav.o -lm
+quadratic_equation.a: quadratic_equation.o
+	ar rc quadratic_equation.a quadratic_equation.o -lm
 
-urav_test.o: tests/urav_test.c
-	gcc -g -c tests/urav_test.c -o urav_test.o -lm
+quadratic_equation_test.o: tests/quadratic_equation_test.c
+	gcc -g -c tests/quadratic_equation_test.c -o quadratic_equation_test.o -lm
 
-urav_test: urav_test.o urav.a
-	gcc -g -static -o urav_test urav_test.o urav.a -lm
+quadratic_equation_test: quadratic_equation_test.o quadratic_equation.a
+	gcc -g -static -o quadratic_equation_test quadratic_equation_test.o quadratic_equation.a -lm
 
 
-test1: urav_test
-	./urav_test
+quadratic_test: quadratic_equation_test
+	./quadratic_equation_test
 
 #--- integral
 
-intg.o: intg.h intg.c
-	gcc -g -c intg.c -o intg.o -lm
+integral.o: integral.h integral.c
+	gcc -g -c integral.c -o integral.o -lm
 
-intg.a: intg.o
-	ar rc intg.a intg.o -lm
+integral.a: integral.o
+	ar rc integral.a integral.o -lm
 
-intg_test.o: tests/intg_test.c
-	gcc -g -c tests/intg_test.c -o intg_test.o -lm
+integral_test.o: tests/integral_test.c
+	gcc -g -c tests/integral_test.c -o integral_test.o -lm
 
-intg_test: intg_test.o intg.a
-	gcc -g -static -o intg_test intg_test.o intg.a -lm
-
-
-test2: intg_test
-	./intg_test
-
-#--- spisok
-
-spsk.o: spsk.h spsk.c
-	gcc -g -c spsk.c -o spsk.o
-
-spsk.a: spsk.o
-	ar rc spsk.a spsk.o
-
-spsk_test.o: tests/spsk_test.c
-	gcc -g -c tests/spsk_test.c -o spsk_test.o
-
-spsk_test: spsk_test.o spsk.a
-	gcc -g -static -o spsk_test spsk_test.o spsk.a
+integral_test: integral_test.o integral.a
+	gcc -g -static -o integral_test integral_test.o integral.a -lm
 
 
-test3: spsk_test
-	./spsk_test
+integral_testing: integral_test
+	./integral_test
+
+#--- list
+
+list.o: list.h list.c
+	gcc -g -c list.c -o list.o
+
+list.a: list.o
+	ar rc list.a list.o
+
+list_test.o: tests/list_test.c
+	gcc -g -c tests/list_test.c -o list_test.o
+
+list_test: list_test.o list.a
+	gcc -g -static -o list_test list_test.o list.a
+
+
+list_testing: list_test
+	./list_test
 
 #--- stack
 
-stck.o: stck.h stck.c
-	gcc -g -c stck.c -o stck.o
+stack.o: stack.h stack.c
+	gcc -g -c stack.c -o stack.o
 
-stck.a: stck.o
-	ar rc stck.a stck.o
+stack.a: stack.o
+	ar rc stack.a stack.o
 
-stck_test.o: tests/stck_test.c
-	gcc -g -c tests/stck_test.c -o stck_test.o
+stack_test.o: tests/stack_test.c
+	gcc -g -c tests/stack_test.c -o stack_test.o
 
-stck_test: stck_test.o stck.a
-	gcc -g -static -o stck_test stck_test.o stck.a
+stack_test: stack_test.o stack.a
+	gcc -g -static -o stack_test stack_test.o stack.a
 
 
-test4: stck_test
-	./stck_test
+stack_testing: stack_test
+	./stack_test
 
-run_tests: test1 test2 test3 test4
-	./urav_test
-	./intg_test
-	./spsk_test
-	./stck_test
+run_tests: quadratic_test integral_testing list_testing stack_testing
+	./quadratic_equation_test
+	./integral_test
+	./list_test
+	./stack_test

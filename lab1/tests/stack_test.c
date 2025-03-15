@@ -1,4 +1,4 @@
-#include "../stck.h"
+#include "../stack.h"
 #include <stdio.h>
 
 int main() { return 0; }
