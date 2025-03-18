@@ -92,4 +92,3 @@ int main() {
   test_integral_cos();
   return 0;
 }
-
