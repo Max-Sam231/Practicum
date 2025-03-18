@@ -13,3 +13,4 @@ double integral(double (*f)(double), double a, double b, int n) {
 
   return sum * h;
 }
+
