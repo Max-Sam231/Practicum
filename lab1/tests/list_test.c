@@ -63,22 +63,22 @@ void test_push_middle() {
   printf("test_push_middle passed!\n");
 }
 
-void test_pop_item() {
+void test_delete_item() {
   Item *list = NULL;
   push_end(&list, 10);
   push_end(&list, 20);
   push_end(&list, 30);
 
-  pop_item(&list, 20);
+  delete_item(&list, 20);
   assert(list->current == 10);
   assert(list->next->current == 30);
   assert(list->next->next == NULL);
 
-  pop_item(&list, 10);
+  delete_item(&list, 10);
   assert(list->current == 30);
   assert(list->next == NULL);
 
-  pop_item(&list, 30);
+  delete_item(&list, 30);
   assert(list == NULL);
 
   free(list);
@@ -121,12 +121,12 @@ void test_count_elem() {
   printf("test_count_elem passed!\n");
 }
 
-void test_pop_item_not_found() {
+void test_delete_item_not_found() {
   Item *list = NULL;
   push_end(&list, 10);
   push_end(&list, 20);
 
-  pop_item(&list, 30);
+  delete_item(&list, 30);
   assert(list->current == 10);
   assert(list->next->current == 20);
   assert(list->next->next == NULL);
@@ -141,10 +141,9 @@ int main() {
   test_push_start();
   test_push_end();
   test_push_middle();
-  test_pop_item();
+  test_delete_item();
   test_find_item();
   test_count_elem();
-  test_pop_item_not_found();
-
+  test_delete_item_not_found();
   return 0;
 }

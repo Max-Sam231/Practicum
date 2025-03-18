@@ -45,7 +45,7 @@ void push_middle(Item **start_elem, int data, int index) {
   temp_start_elem->next = new_item;
 }
 
-void pop_item(Item **start_elem, int value) {
+void delete_item(Item **start_elem, int value) {
   Item *temp_start_elem = *start_elem;
   Item *prev = NULL;
   if (temp_start_elem != NULL && temp_start_elem->current == value) {
