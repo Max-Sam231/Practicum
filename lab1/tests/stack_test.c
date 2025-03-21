@@ -82,7 +82,7 @@ void test_peek_empty_stack() {
   Stack stack;
   int res;
   init(&stack, 10);
-  assert(peek(&stack,&res) == STACK_UNDERFLOW);
+  assert(peek(&stack, &res) == STACK_UNDERFLOW);
   printf("test_peek_empty_stack passed\n");
   free(stack.items);
 }
