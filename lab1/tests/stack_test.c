@@ -33,9 +33,11 @@ void test_full_stack() {
 
 void test_peek_stack() {
   Stack stack;
+  int res;
   init(&stack, 10);
   push(&stack, 10);
-  assert(peek(&stack) == 10);
+  assert(peek(&stack, &res) == 0);
+  assert(res == 10);
   printf("test_peek_stack passed\n");
   free(stack.items);
 }
@@ -52,30 +54,35 @@ void test_push_stack() {
 
 void test_pop_stack() {
   Stack stack;
+  int res;
   init(&stack, 10);
   push(&stack, 30);
-  pop(&stack);
+  pop(&stack, &res);
   assert(stack.top_elem == -1);
+  assert(res == 30);
   printf("test_pop_stack passed\n");
   free(stack.items);
 }
 
 void test_pop_empty_stack() {
   Stack stack;
+  int res;
   init(&stack, 10);
   push(&stack, -1);
   push(&stack, 10);
-  pop(&stack);
-  assert(pop(&stack) == -1 && stack.is_empty == false);
-  assert(pop(&stack) == -1);
+  pop(&stack, &res);
+  assert(pop(&stack, &res) == 0);
+  assert(res == -1);
+  assert(pop(&stack, &res) == STACK_UNDERFLOW);
   printf("test_pop_empty_stack passed\n");
   free(stack.items);
 }
 
 void test_peek_empty_stack() {
   Stack stack;
+  int res;
   init(&stack, 10);
-  assert(peek(&stack) == -1);
+  assert(peek(&stack,&res) == STACK_UNDERFLOW);
   printf("test_peek_empty_stack passed\n");
   free(stack.items);
 }
