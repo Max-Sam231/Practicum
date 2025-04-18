@@ -1,4 +1,4 @@
-name: Lab1 CI-pipeline
+name: lab Сi-pipeline
 
 on:
   push:
@@ -13,11 +13,19 @@ jobs:
 
       - name: Install dependencies
         run: sudo apt update && sudo apt install -y clang-format make
-        
-      - name: Checkstyle
+
+      - name: Lab 1 Check formatting
         working-directory: lab1
         run: make check_fmt
 
-      - name: Run tests
+      - name: Lab 1 Run tests
         working-directory: lab1
+        run: make run_tests
+
+      - name: Lab 2 Check formatting
+        working-directory: lab2
+        run: make check_fmt
+
+      - name: Lab 2 Run tests
+        working-directory: lab2
         run: make run_tests
