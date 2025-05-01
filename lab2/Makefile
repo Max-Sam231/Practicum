@@ -45,18 +45,17 @@ pull_allocator_testing: pull_allocator_test
 
 #--- array list
 
-array_list.o: array_list.h array_list.c
+array_list.o: array_list.h array_list.c linear_allocator.h
 	gcc -g -c array_list.c -o array_list.o
 
 array_list.a: array_list.o
 	ar rc array_list.a array_list.o
 
-array_list_test.o: tests/array_list_test.c
+array_list_test.o: tests/array_list_test.c array_list.h linear_allocator.h
 	gcc -g -c tests/array_list_test.c -o array_list_test.o
 
-array_list_test: array_list_test.o array_list.a
-	gcc -g -static -o array_list_test array_list_test.o array_list.a
-
+array_list_test: array_list_test.o array_list.a linear_allocator.a
+	gcc -g -static -o array_list_test array_list_test.o array_list.a linear_allocator.a -lm
 
 array_list_testing: array_list_test
 	./array_list_test
