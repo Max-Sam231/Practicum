@@ -27,21 +27,21 @@ linear_allocator_testing: linear_allocator_test
 
 #--- pull allocator
 
-pull_allocator.o: pull_allocator.h pull_allocator.c
-	gcc -g -c pull_allocator.c -o pull_allocator.o -lm
+pool_allocator.o: pool_allocator.h pool_allocator.c
+	gcc -g -c pool_allocator.c -o pool_allocator.o -lm
 
-pull_allocator.a: pull_allocator.o
-	ar rc pull_allocator.a pull_allocator.o -lm
+pool_allocator.a: pool_allocator.o
+	ar rc pool_allocator.a pool_allocator.o -lm
 
-pull_allocator_test.o: tests/pull_allocator_test.c
-	gcc -g -c tests/pull_allocator_test.c -o pull_allocator_test.o -lm
+pool_allocator_test.o: tests/pool_allocator_test.c
+	gcc -g -c tests/pool_allocator_test.c -o pool_allocator_test.o -lm
 
-pull_allocator_test: pull_allocator_test.o pull_allocator.a
-	gcc -g -static -o pull_allocator_test pull_allocator_test.o pull_allocator.a -lm
+pool_allocator_test: pool_allocator_test.o pool_allocator.a
+	gcc -g -static -o pool_allocator_test pool_allocator_test.o pool_allocator.a -lm
 
 
-pull_allocator_testing: pull_allocator_test
-	./pull_allocator_test
+pool_allocator_testing: pool_allocator_test
+	./pool_allocator_test
 
 #--- array list
 
@@ -78,8 +78,8 @@ hash_table_test: hash_table_test.o hash_table.a
 hash_table_testing: hash_table_test
 	./hash_table_test
 
-run_tests: linear_allocator_testing pull_allocator_testing array_list_testing hash_table_testing
+run_tests: linear_allocator_testing pool_allocator_testing array_list_testing hash_table_testing
 	./linear_allocator_test
-	./pull_allocator_test
+	./pool_allocator_test
 	./array_list_test
 	./hash_table_test
