@@ -62,17 +62,17 @@ array_list_testing: array_list_test
 
 #--- hash table
 
-hash_table.o: hash_table.h hash_table.c
+hash_table.o: hash_table.h hash_table.c pool_allocator.h
 	gcc -g -c hash_table.c -o hash_table.o
 
 hash_table.a: hash_table.o
 	ar rc hash_table.a hash_table.o
 
-hash_table_test.o: tests/hash_table_test.c
+hash_table_test.o: tests/hash_table_test.c pool_allocator.h
 	gcc -g -c tests/hash_table_test.c -o hash_table_test.o
 
-hash_table_test: hash_table_test.o hash_table.a
-	gcc -g -static -o hash_table_test hash_table_test.o hash_table.a
+hash_table_test: hash_table_test.o hash_table.a pool_allocator.a
+	gcc -g -static -o hash_table_test hash_table_test.o hash_table.a pool_allocator.a -lm
 
 
 hash_table_testing: hash_table_test
