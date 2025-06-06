@@ -133,8 +133,8 @@ cycled_links_test: cycled_links_test.o cycled_links.a
 destructor_test.o: tests/destructor_test.c garbage_collection/destructor.h
 	gcc -g -c tests/destructor_test.c -o destructor_test.o -lm
 
-destructor_test: destructor_test.o garbage_collector.a pool_alloc.a
-	gcc -g -static -o destructor_test destructor_test.o garbage_collector.a pool_alloc.a -lm
+destructor_test: destructor_test.o destructor.a pool_allocator.a
+	gcc -g -static -o destructor_test destructor_test.o destructor.a pool_allocator.a -lm
 
 garbage_collector_test.o: tests/garbage_collector_test.c garbage_collection/garbage_collector.h
 	gcc -g -c tests/garbage_collector_test.c -o garbage_collector_test.o -lm
@@ -199,3 +199,4 @@ destructor: destructor.o destructor.a
 garbage_collector: garbage_collector.o garbage_collector.a
 	gcc -g -static -o garbage_collector garbage_collector.o garbage_collector.a -lm
 	./garbage_collector
+	
