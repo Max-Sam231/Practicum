@@ -1,21 +1,27 @@
-SRC_DIR = data_structures memory
+SRC_DIR = data_structures memory utils
 TEST_DIR = tests
+TEST_SRCS = $(wildcard $(TEST_DIR)/*_test.c)
+PRGS = $(patsubst %.c, %, $(notdir $(TEST_SRCS)))
 
 SRCS = $(foreach dir, $(SRC_DIR), $(wildcard $(dir)/*.c))
 HDRS = $(foreach dir, $(SRC_DIR), $(wildcard $(dir)/*.h))
 
-memory_test: $(PRGS)
-	@for test in $(PRGS); do \
-        valgrind --leak-check=full ./$$test || exit 1; \
-    done;
+all: $(PRGS) run_tests
 
-test: $(PRGS)
-	for test in $(PRGS); do \
+run_tests: $(PRGS)
+	@for test in $(PRGS); do \
+        echo "Running: $$test"; \
         ./$$test || exit 1; \
     done
 
-clear: 
-	rm -rf *.o *.a *_test
+memory_test: $(PRGS)
+	@for test in $(PRGS); do \
+        echo "Memory check: $$test"; \
+        valgrind --leak-check=full ./$$test || exit 1; \
+    done
+
+clear:
+	rm -rf *.o *.a $(PRGS) $(OBJS)
 
 check_fmt:
 	clang-format -style=LLVM -i `find . -regex ".+\.[ch]"` --dry-run --Werror
@@ -23,14 +29,13 @@ check_fmt:
 fmt:
 	clang-format -style=LLVM -i `find -regex ".+\.[ch]"`
 
-%.o: %.h %.c
-	gcc -g -c $< -o $@
+%.o: %.c 
+	gcc -g -c $< -o $@ -I. -lm
 
-%.a: %.o
-	ar rc $@ $^
+OBJS = $(SRCS:.c=.o)
 
-%_test.o: %_test.c
-	gcc -g -c $^ -o $@
+%_test.o: tests/%_test.c
+	gcc -g -c $^ -o $@ -I. -lm
 
-%_test: %_test.o %.a
+%_test: %_test.o $(OBJS)
 	gcc -g -static -o $@ $^ -lm
