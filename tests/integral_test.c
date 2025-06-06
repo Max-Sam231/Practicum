@@ -1,4 +1,4 @@
-#include "../integral.h"
+#include "../utils/integral.h"
 #include <assert.h>
 #include <math.h>
 #include <stdio.h>
