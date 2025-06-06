@@ -18,4 +18,4 @@ jobs:
         run: make check_fmt
           
       - name: Run all checks
-        run: test_and_mem
+        run: make test_and_mem
