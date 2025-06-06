@@ -15,7 +15,7 @@ static int hash(const char *key) {
 }
 
 void hashtable_init(HashTable *table, size_t capacity,
-                    PoolAllocator *allocator) {
+                    size_t value_size, PoolAllocator *allocator) {
   assert(table && allocator && capacity > 0);
   table->capacity = capacity;
   table->value_size = value_size;
@@ -102,6 +102,6 @@ void hashtable_free(HashTable *table) {
     }
   }
 
-  free(table->allocator, table->items);
+  pool_free(table->allocator, table->items);
   table->items = NULL;
 }
