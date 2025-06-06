@@ -63,3 +63,4 @@ void pool_deinit(void *allocator) {
   free(alloc->pool);
   free(allocator);
 }
+
