@@ -1,4 +1,4 @@
-#include "../pool_allocator.h"
+#include "../memory/pool_allocator.h"
 #include <assert.h>
 
 void test_pool_init() {

@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "../hash_table.h"
-#include "../pool_allocator.h"
+#include "../data_structures/hash_table.h"
+#include "../memory/pool_allocator.h"
 
 void setup(PoolAllocator *allocator, HashTable *table, size_t capacity,
            size_t value_size) {

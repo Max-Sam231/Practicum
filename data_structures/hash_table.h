@@ -1,7 +1,7 @@
 #ifndef HASH_TABLE_H
 #define HASH_TABLE_H
 
-#include "pool_allocator.h"
+#include "../memory/pool_allocator.h"
 
 typedef struct Item {
   const char *key;

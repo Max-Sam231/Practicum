@@ -1,7 +1,7 @@
 #ifndef ARRAY_LIST_H
 #define ARRAY_LIST_H
 
-#include "linear_allocator.h"
+#include "../memory/linear_allocator.h"
 
 typedef struct {
   void *data;

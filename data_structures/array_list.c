@@ -1,5 +1,5 @@
 #include "array_list.h"
-#include "linear_allocator.h"
+#include "../memory/linear_allocator.h"
 #include <assert.h>
 #include <string.h>
 
