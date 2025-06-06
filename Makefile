@@ -20,6 +20,8 @@ memory_test: $(PRGS)
         valgrind --leak-check=full ./$$test || exit 1; \
     done
 
+test_and_mem: run_tests memory_test
+
 clear:
 	rm -rf *.o *.a $(PRGS) $(OBJS)
 
