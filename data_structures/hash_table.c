@@ -2,8 +2,8 @@
 #include <stdint.h>
 #include <string.h>
 
-#include "hash_table.h"
 #include "../memory/pool_allocator.h"
+#include "hash_table.h"
 
 static int hash(const char *key) {
   uint32_t hash = 1365;
