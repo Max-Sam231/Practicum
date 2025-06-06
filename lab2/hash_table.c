@@ -18,6 +18,7 @@ void hashtable_init(HashTable *table, size_t capacity,
                     PoolAllocator *allocator) {
   assert(table && allocator && capacity > 0);
   table->capacity = capacity;
+  table->value_size = value_size;
   table->allocator = allocator;
 
   table->items = (Item *)pool_alloc(allocator);
@@ -39,12 +40,15 @@ void hashtable_insert(HashTable *table, const char *key, void *value) {
       char *key_copy = (char *)pool_alloc(allocator);
       strcpy(key_copy, key);
 
+      void *value_copy = pool_alloc(allocator);
+      memcpy(value_copy, value, table->value_size);
+
       item->key = key_copy;
-      item->value = value;
+      item->value = value_copy;
       item->is_occupied = 1;
       return;
     } else if (strcmp(item->key, key) == 0) {
-      item->value = value;
+      memcpy(item->value, value, table->value_size);
       return;
     }
   }
@@ -57,9 +61,8 @@ void *hashtable_get(HashTable *table, const char *key) {
     size_t cur_index = (index + i) % table->capacity;
     Item *item = &table->items[cur_index];
 
-    if (!item->is_occupied) {
+    if (!item->is_occupied)
       continue;
-    }
 
     if (strcmp(item->key, key) == 0) {
       return item->value;
@@ -94,9 +97,11 @@ void hashtable_free(HashTable *table) {
   for (size_t i = 0; i < table->capacity; ++i) {
     Item *item = &table->items[i];
     if (item->key) {
+      pool_free(table->allocator, (void *)item->key);
+      pool_free(table->allocator, item->value);
     }
   }
 
-  free(table->items);
+  free(table->allocator, table->items);
   table->items = NULL;
 }
