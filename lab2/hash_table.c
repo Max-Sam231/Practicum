@@ -14,8 +14,8 @@ static int hash(const char *key) {
   return hash;
 }
 
-void hashtable_init(HashTable *table, size_t capacity,
-                    size_t value_size, PoolAllocator *allocator) {
+void hashtable_init(HashTable *table, size_t capacity, size_t value_size,
+                    PoolAllocator *allocator) {
   assert(table && allocator && capacity > 0);
   table->capacity = capacity;
   table->value_size = value_size;

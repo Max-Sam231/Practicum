@@ -6,7 +6,8 @@
 #include "../hash_table.h"
 #include "../pool_allocator.h"
 
-void setup(PoolAllocator *allocator, HashTable *table, size_t capacity, size_t value_size) {
+void setup(PoolAllocator *allocator, HashTable *table, size_t capacity,
+           size_t value_size) {
 
   size_t max_block_size = sizeof(Item);
   if (value_size > max_block_size) {
