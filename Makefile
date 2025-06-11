@@ -127,8 +127,8 @@ pool_allocator_test: pool_allocator_test.o pool_allocator.a
 cycled_links_test.o: tests/cycled_links_test.c garbage_collection/cycled_links.h
 	gcc -g -c tests/cycled_links_test.c -o cycled_links_test.o -lm
 
-cycled_links_test: cycled_links_test.o cycled_links.a
-	gcc -g -static -o cycled_links_test cycled_links_test.o cycled_links.a -lm
+cycled_links_test: cycled_links_test.o cycled_links.a pool_allocator.a
+	gcc -g -static -o cycled_links_test cycled_links_test.o cycled_links.a pool_allocator.a -lm
 
 destructor_test.o: tests/destructor_test.c garbage_collection/destructor.h
 	gcc -g -c tests/destructor_test.c -o destructor_test.o -lm
@@ -142,7 +142,7 @@ garbage_collector_test.o: tests/garbage_collector_test.c garbage_collection/garb
 garbage_collector_test: garbage_collector_test.o garbage_collector.a pool_allocator.a
 	gcc -g -static -o garbage_collector_test garbage_collector_test.o garbage_collector.a pool_allocator.a -lm
 
-run_tests: quadratic_equation_test integral_test list_test stack_test array_list_test hash_table_test linear_allocator_test pool_allocator_test garbage_collector_test 
+run_tests: quadratic_equation_test integral_test list_test stack_test array_list_test hash_table_test linear_allocator_test pool_allocator_test garbage_collector_test cycled_links_test
 	valgrind --leak-check=full --show-leak-kinds=all ./quadratic_equation_test
 	valgrind --leak-check=full --show-leak-kinds=all ./integral_test
 	valgrind --leak-check=full --show-leak-kinds=all ./list_test
@@ -151,6 +151,7 @@ run_tests: quadratic_equation_test integral_test list_test stack_test array_list
 	valgrind --leak-check=full --show-leak-kinds=all ./hash_table_test
 	valgrind --leak-check=full --show-leak-kinds=all ./linear_allocator_test
 	valgrind --leak-check=full --show-leak-kinds=all ./pool_allocator_test
+	valgrind --leak-check=full --show-leak-kinds=all ./cycled_links_test
 	valgrind --leak-check=full --show-leak-kinds=all ./garbage_collector_test
 
 integral: integral.o integral.a
