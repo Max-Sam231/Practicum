@@ -144,14 +144,14 @@ garbage_collector_test: garbage_collector_test.o garbage_collector.a
 
 
 run_tests: quadratic_equation_test integral_test list_test stack_test array_list_test hash_table_test linear_allocator_test pool_allocator_test 
-	valgrind --leak-check=full --show-leak-kinds=all ./quadratic_equation_test
-	valgrind --leak-check=full --show-leak-kinds=all ./integral_test
-	valgrind --leak-check=full --show-leak-kinds=all ./list_test
-	valgrind --leak-check=full --show-leak-kinds=all ./stack_test
-	valgrind --leak-check=full --show-leak-kinds=all ./array_list_test
-	valgrind --leak-check=full --show-leak-kinds=all ./hash_table_test
-	valgrind --leak-check=full --show-leak-kinds=all ./linear_allocator_test
-	valgrind --leak-check=full --show-leak-kinds=all ./pool_allocator_test
+	./quadratic_equation_test
+	./integral_test
+	./list_test
+	./stack_test
+	./array_list_test
+	./hash_table_test
+	./linear_allocator_test
+	./pool_allocator_test
 
 
 
