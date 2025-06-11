@@ -144,14 +144,11 @@ garbage_collector_test: garbage_collector_test.o garbage_collector.a
 
 
 run_tests: quadratic_equation_test integral_test list_test stack_test array_list_test hash_table_test linear_allocator_test pool_allocator_test 
-	./quadratic_equation_test
-	./integral_test
-	./list_test
-	./stack_test
-	./array_list_test
-	./hash_table_test
-	./linear_allocator_test
-	./pool_allocator_test
+	@for f in *_test; do \
+		if [ -x "$$f" ]; then \
+			valgrind --leak-check=full --show-leak-kinds=all ./$$f; \
+		fi \
+	done
 
 
 
