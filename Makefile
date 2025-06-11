@@ -200,8 +200,7 @@ destructor: destructor.o destructor.a
 garbage_collector: garbage_collector.o garbage_collector.a
 	gcc -g -static -o garbage_collector garbage_collector.o garbage_collector.a -lm
 	./garbage_collector
-	
-=======
+
 clear:
 	rm -rf *.o *.a *_test integral quadratic_equation list stack
 
@@ -337,8 +336,8 @@ cycled_links_test: cycled_links_test.o cycled_links.a pool_allocator.a
 destructor_test.o: tests/destructor_test.c garbage_collection/destructor.h
 	gcc -g -c tests/destructor_test.c -o destructor_test.o -lm
 
-destructor_test: destructor_test.o destructor.a
-	gcc -g -static -o destructor_test destructor_test.o destructor.a -lm
+destructor_test: destructor_test.o destructor.a pool_allocator.a
+	gcc -g -static -o destructor_test destructor_test.o destructor.a pool_allocator.a -lm
 
 garbage_collector_test.o: tests/garbage_collector_test.c garbage_collection/garbage_collector.h
 	gcc -g -c tests/garbage_collector_test.c -o garbage_collector_test.o -lm
@@ -357,7 +356,7 @@ run_tests: quadratic_equation_test integral_test list_test stack_test array_list
 	valgrind --leak-check=full --show-leak-kinds=all ./pool_allocator_test
 	valgrind --leak-check=full --show-leak-kinds=all ./cycled_links_test
 	valgrind --leak-check=full --show-leak-kinds=all ./garbage_collector_test
-  valgrind --leak-check=full --show-leak-kinds=all ./destructor_test
+	valgrind --leak-check=full --show-leak-kinds=all ./destructor_test
 
 integral: integral.o integral.a
 	gcc -g -static -o integral integral.o integral.a -lm
